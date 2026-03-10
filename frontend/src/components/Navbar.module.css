@@ -1,0 +1,145 @@
+/* src/components/Navbar.module.css */
+/* Green navbar + subtle wine tint to match Vine/Wine pages */
+
+.header{
+  position: sticky;
+  top: 0;
+  z-index: 80;
+
+  background:
+    radial-gradient(900px 320px at 15% 0%, rgba(34, 197, 94, 0.18), transparent 62%),
+    radial-gradient(900px 320px at 90% 10%, rgba(16, 185, 129, 0.14), transparent 62%),
+    radial-gradient(900px 320px at 55% 0%, rgba(180, 42, 74, 0.10), transparent 65%),
+    rgba(16, 10, 18, 0.72);
+
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(12px);
+}
+
+.inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand{
+  font-weight: 950;
+  letter-spacing: -0.6px;
+  color: rgba(255, 247, 249, 0.96);
+  text-decoration: none;
+  font-size: 1.35rem;
+  display:flex;
+  align-items:baseline;
+  gap: 2px;
+}
+
+.brand span{
+  color: rgba(34, 197, 94, 0.95);
+  text-shadow: 0 10px 30px rgba(34, 197, 94, 0.22);
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content:flex-end;
+}
+
+/* shared */
+.link, .active{
+  text-decoration:none;
+  font-weight: 900;
+  font-size: 0.92rem;
+  padding: 9px 12px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255, 247, 249, 0.92);
+  background: rgba(255,255,255,0.06);
+
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+
+  transition: transform .12s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.link:hover{
+  background: rgba(255,255,255,0.10);
+  transform: translateY(-1px);
+}
+
+/* ✅ Active = green glow, but softened to match wine pages */
+.active{
+  background: rgba(34, 197, 94, 0.16);
+  border-color: rgba(34, 197, 94, 0.38);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
+
+.icon{
+  width: 18px;
+  height: 18px;
+  opacity: .95;
+  flex: 0 0 auto;
+}
+
+/* Cart badge */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width: 22px;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 999px;
+
+  background: rgba(34, 197, 94, 0.20);
+  border: 1px solid rgba(34, 197, 94, 0.40);
+  color: rgba(255, 247, 249, 0.95);
+  font-weight: 950;
+  font-size: 0.78rem;
+}
+
+/* Logout button */
+.logout{
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255, 247, 249, 0.92);
+  padding: 9px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 950;
+  font-size: 0.92rem;
+  display:inline-flex;
+  align-items:center;
+  gap: 10px;
+  transition: transform .12s ease, background .2s ease;
+}
+
+.logout:hover{
+  background: rgba(255,255,255,0.10);
+  transform: translateY(-1px);
+}
+
+.meTag{
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.16);
+  border: 1px solid rgba(34, 197, 94, 0.30);
+  font-size: 0.78rem;
+  font-weight: 950;
+  color: rgba(255, 247, 249, 0.95);
+}
+
+/* Mobile */
+@media (max-width: 640px){
+  .inner{ padding: 12px 14px; }
+  .nav{ gap: 10px; }
+  .link, .active, .logout{ padding: 8px 10px; }
+  .icon{ width: 17px; height: 17px; }
+}

@@ -1,0 +1,385 @@
+/* src/pages/OrdersPage.module.css */
+
+/* ===== VINE / WINE THEME BACKGROUND ===== */
+.page{
+  min-height: calc(100vh - 64px);
+  padding: 28px 16px 56px;
+
+  background:
+    radial-gradient(900px 520px at 10% 0%, rgba(136, 19, 55, 0.20), transparent 55%),
+    radial-gradient(900px 520px at 90% 10%, rgba(180, 42, 74, 0.14), transparent 60%),
+    linear-gradient(135deg, #1a0b12, #2a0f1d 45%, #14080e);
+
+  color: rgba(255,247,249,0.95);
+}
+
+/* ===== MAIN SHELL (GLASS) ===== */
+.shell{
+  max-width: 1100px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 22px;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.55);
+  backdrop-filter: blur(14px);
+  padding: 20px;
+}
+
+/* ===== HEADER ===== */
+.head{
+  display:flex;
+  justify-content: space-between;
+  align-items:flex-start;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.title{
+  margin:0;
+  font-weight: 950;
+  letter-spacing: -0.6px;
+  color: rgba(255,255,255,0.98);
+}
+
+/* ✅ info bar like checkout */
+.infoBar{
+  margin-top: 10px;
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.infoItem{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,247,249,0.90);
+  font-weight: 850;
+  font-size: 0.92rem;
+}
+
+.infoIcon{
+  width: 18px;
+  height: 18px;
+  opacity: .95;
+}
+
+/* Refresh */
+.refresh{
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.95);
+  padding: 10px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 950;
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  transition: transform .12s ease, background .2s ease;
+}
+.refresh:hover{
+  background: rgba(255,255,255,0.14);
+  transform: translateY(-1px);
+}
+.refreshIcon{
+  width: 18px;
+  height: 18px;
+}
+
+/* States */
+.state{
+  margin-top: 14px;
+  opacity:.9;
+  font-weight: 850;
+  color: rgba(255,247,249,0.85);
+}
+
+.error{
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-weight: 900;
+  background: rgba(239, 68, 68, 0.18);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: rgba(255,255,255,0.95);
+}
+
+/* ===== LIST ===== */
+.list{
+  margin-top: 16px;
+  display:flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ===== CARD ===== */
+.card{
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  border-radius: 20px;
+  overflow:hidden;
+  box-shadow: 0 20px 55px rgba(0,0,0,0.35);
+}
+
+.cardTop{
+  display:flex;
+  justify-content: space-between;
+  align-items:flex-start;
+  gap: 12px;
+  padding: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.meta{
+  margin-top: 6px;
+  display:flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items:center;
+  opacity:.92;
+  font-weight: 750;
+  color: rgba(255,247,249,0.86);
+}
+
+.dot{ opacity:.55; }
+.paid{ font-weight: 950; opacity:.95; }
+.total{ font-weight: 950; }
+.loc{ font-weight: 800; opacity:.92; }
+
+/* Status pill */
+.pill{
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 950;
+  letter-spacing: .2px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.92);
+}
+
+/* ✅ wine-friendly status colors */
+.pending{
+  border-color: rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.08);
+}
+
+.verifying{
+  border-color: rgba(255, 194, 71, 0.55);
+  background: rgba(255, 194, 71, 0.12);
+}
+
+.accepted{
+  border-color: rgba(34, 197, 94, 0.55);
+  background: rgba(34, 197, 94, 0.14);
+}
+
+.done{
+  border-color: rgba(99, 102, 241, 0.55);
+  background: rgba(99, 102, 241, 0.14);
+}
+
+.rejected{
+  border-color: rgba(239, 68, 68, 0.55);
+  background: rgba(239, 68, 68, 0.14);
+}
+
+/* ===== ITEMS ===== */
+.items{
+  padding: 12px 14px 2px;
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item{
+  display:grid;
+  grid-template-columns: 56px 1fr 110px;
+  gap: 12px;
+  align-items:center;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed rgba(255,255,255,0.16);
+}
+.item:last-child{ border-bottom: none; padding-bottom: 0; }
+
+.thumb{
+  width:56px;
+  height:56px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+.itemTitle{
+  font-weight: 950;
+  color: rgba(255,255,255,0.95);
+}
+.itemMeta{
+  margin-top: 4px;
+  opacity:.88;
+  font-weight: 750;
+  font-size: .9rem;
+  color: rgba(255,247,249,0.84);
+}
+
+.itemRight{
+  text-align:right;
+  font-weight: 950;
+  color: rgba(255,255,255,0.95);
+}
+
+/* Note */
+.note{
+  padding: 12px 14px 14px;
+  opacity: .92;
+  font-weight: 750;
+  color: rgba(255,247,249,0.88);
+  border-top: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.12);
+}
+.when{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 850;
+  opacity: 0.95;
+}
+
+.whenIcon{
+  width: 16px;
+  height: 16px;
+  opacity: 0.9;
+}
+/* ================================
+   ✅ Orders Search + Filter Bar
+================================ */
+.tools{
+  margin-top: 12px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.18);
+  border-radius: 16px;
+  padding: 12px;
+}
+
+.searchWrap{
+  position: relative;
+  flex: 1;
+  min-width: 260px;
+  display:flex;
+  align-items:center;
+  gap: 10px;
+
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+.searchIcon{
+  width: 18px;
+  height: 18px;
+  opacity: 0.9;
+  flex: 0 0 auto;
+}
+
+.searchInput{
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: rgba(255,255,255,0.95);
+  font-weight: 900;
+  font-size: 0.95rem;
+}
+
+.searchInput::placeholder{
+  color: rgba(255,255,255,0.65);
+  font-weight: 800;
+}
+
+.clearBtn{
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.92);
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 900;
+  transition: transform .12s ease, background .2s ease;
+}
+.clearBtn:hover{
+  background: rgba(255,255,255,0.14);
+  transform: translateY(-1px);
+}
+
+.filterWrap{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+.filterLabel{
+  font-weight: 950;
+  opacity: 0.9;
+}
+
+.filterSelect{
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.22);
+  color: rgba(255,255,255,0.95);
+  font-weight: 950;
+  border-radius: 12px;
+  padding: 10px 12px;
+  outline: none;
+  cursor: pointer;
+}
+
+.filterSelect option{
+  background: #0f2027;
+  color: #fff;
+}
+
+.resultCount{
+  font-weight: 950;
+  opacity: 0.9;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+}
+
+/* Mobile: stack nicely */
+@media (max-width: 680px){
+  .tools{
+    gap: 10px;
+  }
+  .searchWrap{
+    min-width: 100%;
+  }
+  .filterWrap{
+    width: 100%;
+    justify-content: space-between;
+  }
+  .resultCount{
+    width: 100%;
+    text-align: center;
+  }
+}

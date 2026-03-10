@@ -1,0 +1,578 @@
+/* src/pages/ShopPage.module.css */
+
+/* ===== VINE / WINE RED THEME ===== */
+.page{
+  min-height: calc(100vh - 64px);
+  background:
+    radial-gradient(900px 520px at 10% 0%, rgba(136, 19, 55, 0.22), transparent 55%),
+    radial-gradient(900px 520px at 90% 10%, rgba(180, 42, 74, 0.16), transparent 60%),
+    linear-gradient(135deg, #1a0b12, #2a0f1d 45%, #14080e);
+  color: #fff7f9;
+}
+
+/* ===== Toast ===== */
+.toast{
+  position: fixed;
+  top: 86px;
+  right: 18px;
+  z-index: 120;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-weight: 900;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+  animation: popIn .18s ease-out;
+}
+.toastOk{
+  background: rgba(34, 197, 94, 0.20);
+  border: 1px solid rgba(34, 197, 94, 0.38);
+}
+.toastBad{
+  background: rgba(239, 68, 68, 0.22);
+  border: 1px solid rgba(239, 68, 68, 0.38);
+}
+@keyframes popIn{
+  from{ transform: translateY(-10px); opacity: 0; }
+  to{ transform: translateY(0); opacity: 1; }
+}
+
+/* ===== HERO ===== */
+.hero{ padding: 44px 16px 18px; }
+
+.heroInner{
+  max-width: 1200px;
+  margin: 0 auto;
+  display:flex;
+  align-items:flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.heroLeft{ max-width: 720px; }
+
+.title{
+  margin:0;
+  font-size: clamp(1.9rem, 3.2vw, 2.75rem);
+  font-weight: 950;
+  letter-spacing: -0.8px;
+  line-height: 1.05;
+  color: #ffffff;
+}
+
+.subtitle{
+  margin: 10px 0 0;
+  opacity: .92;
+  max-width: 560px;
+  line-height: 1.6;
+  color: rgba(255, 247, 249, 0.85);
+}
+
+.heroRight{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+}
+
+/* ✅ SEARCH BAR */
+.searchWrap{
+  margin-top: 14px;
+  position: relative;
+  width: min(560px, 100%);
+}
+
+.searchInput{
+  width: 100%;
+  padding: 12px 44px 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.95);
+  outline: none;
+  font-weight: 850;
+  letter-spacing: -0.2px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.25);
+}
+
+.searchInput::placeholder{
+  color: rgba(255,247,249,0.70);
+  font-weight: 800;
+}
+
+.searchInput:focus{
+  border-color: rgba(180, 42, 74, 0.60);
+  box-shadow: 0 0 0 3px rgba(180, 42, 74, 0.18), 0 20px 55px rgba(0,0,0,0.28);
+}
+
+.clearBtn{
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(0,0,0,0.22);
+  color: rgba(255,255,255,0.92);
+  cursor: pointer;
+  font-weight: 950;
+}
+.clearBtn:hover{ background: rgba(0,0,0,0.34); }
+
+/* ===== Refresh button (wine glass) ===== */
+.refresh{
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 900;
+  backdrop-filter: blur(8px);
+  transition: transform .12s ease, background .2s ease;
+}
+.refresh:hover{
+  background: rgba(255,255,255,0.14);
+  transform: translateY(-1px);
+}
+.refresh:disabled{ opacity:.6; cursor:not-allowed; transform:none; }
+
+/* ===== CONTENT ===== */
+.content{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 16px 64px;
+}
+
+.state{
+  color: rgba(255,247,249,0.85);
+  padding: 16px 0;
+  font-weight: 800;
+}
+
+.noResults{
+  margin: 8px 0 16px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.92);
+  font-weight: 900;
+  backdrop-filter: blur(12px);
+}
+
+.error{
+  background: rgba(239, 68, 68, 0.18);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: rgba(255,255,255,0.95);
+  padding: 12px 14px;
+  border-radius: 14px;
+  margin: 10px 0 16px;
+}
+
+/* ===== GRID / CARDS ===== */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+}
+
+.card{
+  grid-column: span 12;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 22px;
+  overflow:hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.40);
+  backdrop-filter: blur(14px);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 30px 72px rgba(0,0,0,0.50);
+}
+
+@media (min-width: 640px){ .card{ grid-column: span 6; } }
+@media (min-width: 980px){ .card{ grid-column: span 4; } }
+
+.imgWrap{
+  position: relative;
+  cursor: pointer;
+  height: 240px;
+  overflow:hidden;
+}
+
+.cardImg{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display:block;
+  transform: scale(1.02);
+  transition: transform .28s ease, filter .28s ease;
+  filter: saturate(1.05) contrast(1.03);
+}
+.imgWrap:hover .cardImg{ transform: scale(1.09); }
+
+.cardBody{ padding: 16px; }
+
+.cardTop{
+  display:flex;
+  align-items:flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.cardTitle{
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 950;
+  letter-spacing: -0.35px;
+  line-height: 1.25;
+  color: rgba(255,255,255,0.96);
+}
+
+.pricePill{
+  white-space: nowrap;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 950;
+  font-size: .86rem;
+  color: rgba(255,255,255,0.96);
+  border: 1px solid rgba(255,255,255,0.20);
+  background: rgba(255,255,255,0.10);
+}
+
+/* Meta */
+.meta{
+  display:flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.metaLine{
+  display:flex;
+  gap: 10px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.metaLabel{
+  opacity: .80;
+  font-weight: 900;
+}
+
+.metaValue{
+  opacity: .92;
+  font-weight: 850;
+  text-align: right;
+  color: rgba(255,255,255,0.92);
+}
+
+/* ===== ACTIONS ===== */
+.actions{
+  display:flex;
+  gap: 10px;
+}
+
+.primary, .secondary, .primaryWide{
+  border-radius: 14px;
+  padding: 10px 12px;
+  font-weight: 950;
+  cursor:pointer;
+  border: 1px solid transparent;
+  transition: transform .12s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.secondary{
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.95);
+}
+.secondary:hover{
+  background: rgba(255,255,255,0.16);
+  transform: translateY(-1px);
+}
+
+/* ✅ Vine red CTA */
+.primary{
+  flex: 1;
+  background: linear-gradient(180deg, rgba(180, 42, 74, 0.95), rgba(136, 19, 55, 0.85));
+  color: #fff;
+  box-shadow: 0 14px 32px rgba(0,0,0,0.30);
+}
+.primary:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 18px 44px rgba(180, 42, 74, 0.35);
+}
+
+/* ===== MODAL ===== */
+.modalBackdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.60);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 18px;
+  z-index: 60;
+}
+
+.modal{
+  width: min(980px, 100%);
+  background:
+    radial-gradient(900px 500px at 15% 0%, rgba(180, 42, 74, 0.22), transparent 55%),
+    radial-gradient(700px 420px at 90% 10%, rgba(136, 19, 55, 0.18), transparent 60%),
+    rgba(28, 10, 18, 0.95);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 22px;
+  box-shadow: 0 38px 110px rgba(0,0,0,0.65);
+  color: rgba(255,255,255,0.95);
+  overflow:hidden;
+  backdrop-filter: blur(14px);
+}
+
+.modalTop{
+  display:flex;
+  align-items:flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.modalTitle{ margin:0; font-weight: 950; letter-spacing: -0.4px; }
+
+.modalSub{
+  margin: 8px 0 0;
+  opacity:.92;
+  display:flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items:center;
+  color: rgba(255,247,249,0.86);
+}
+
+.priceStrong{ font-weight: 950; color: rgba(255,255,255,0.98); }
+.sep{ opacity:.6; }
+
+.close{
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.92);
+  border-radius: 14px;
+  width: 40px;
+  height: 40px;
+  cursor:pointer;
+}
+.close:hover{ background: rgba(255,255,255,0.14); }
+
+.modalGrid{
+  display:grid;
+  grid-template-columns: 1.25fr 0.75fr;
+}
+@media (max-width: 900px){
+  .modalGrid{ grid-template-columns: 1fr; }
+}
+
+/* Gallery */
+.gallery{
+  position: relative;
+  background: rgba(255,255,255,0.05);
+  min-height: 360px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 18px;
+}
+
+.galleryImg{
+  width: 100%;
+  max-height: 440px;
+  object-fit: contain;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.16);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.12);
+}
+
+.navBtn{
+  position:absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.26);
+  color: rgba(255,255,255,0.95);
+  cursor:pointer;
+  font-size: 1.7rem;
+  line-height: 1;
+}
+.navBtn:hover{ background: rgba(0,0,0,0.40); }
+.navBtn:first-of-type{ left: 14px; }
+.navBtn:last-of-type{ right: 14px; }
+
+.dots{
+  position:absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  display:flex;
+  gap: 8px;
+  justify-content:center;
+}
+
+.dotBtn,.dotActive{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.26);
+  background: rgba(255,255,255,0.12);
+  cursor:pointer;
+}
+.dotActive{
+  background: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.92);
+}
+
+/* Details */
+.details{
+  padding: 18px;
+  display:flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detailRow{
+  display:flex;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 10px 12px;
+}
+
+.k{ opacity:.88; font-weight: 950; }
+.v{ opacity:.95; font-weight: 900; text-align:right; }
+
+.primaryWide{
+  margin-top: 6px;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(180, 42, 74, 0.95), rgba(136, 19, 55, 0.85));
+  color: #fff;
+  box-shadow: 0 16px 38px rgba(0,0,0,0.32);
+}
+.primaryWide:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 18px 50px rgba(180, 42, 74, 0.40);
+}
+
+.hint{
+  margin: 6px 2px 0;
+  font-size: .88rem;
+  opacity: .84;
+  line-height: 1.35;
+}
+/* ===== FIX 1: Modal must scroll (not the page) ===== */
+.modalBackdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.62);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 18px;
+  z-index: 120;
+
+  /* ✅ prevent background scroll feeling */
+  overscroll-behavior: contain;
+}
+
+.modal{
+  width: min(900px, 100%);
+  max-height: calc(100vh - 90px);   /* ✅ important */
+  overflow: hidden;                 /* ✅ keep header fixed */
+  display: flex;                    /* ✅ layout for header + scroll body */
+  flex-direction: column;
+
+  background:
+    radial-gradient(900px 500px at 15% 0%, rgba(180, 42, 74, 0.22), transparent 55%),
+    radial-gradient(700px 420px at 90% 10%, rgba(136, 19, 55, 0.18), transparent 60%),
+    rgba(28, 10, 18, 0.96);
+
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 22px;
+  box-shadow: 0 38px 110px rgba(0,0,0,0.65);
+  color: rgba(255,255,255,0.95);
+  backdrop-filter: blur(14px);
+}
+
+/* ✅ modal header stays visible */
+.modalTop{
+  flex: 0 0 auto;
+}
+
+/* ✅ the form scrolls */
+.form{
+  flex: 1 1 auto;
+  overflow-y: auto;                 /* ✅ important */
+  padding: 14px 16px 16px;
+
+  /* ✅ smooth scrolling + nice scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.25) transparent;
+}
+
+.form::-webkit-scrollbar{ width: 10px; }
+.form::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,0.18);
+  border-radius: 999px;
+}
+.form::-webkit-scrollbar-thumb:hover{
+  background: rgba(255,255,255,0.28);
+}
+
+/* ===== FIX 2: Edit/Delete buttons visible and strong ===== */
+.actions{
+  margin-top: 14px;
+  display:flex;
+  gap: 10px;
+}
+
+.secondary,
+.danger{
+  flex: 1;
+  border-radius: 14px;
+  padding: 10px 12px;
+  font-weight: 950;
+  cursor:pointer;
+
+  /* ✅ stronger contrast */
+  color: rgba(255,255,255,0.95);
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(0,0,0,0.22);
+
+  transition: transform .12s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.secondary:hover,
+.danger:hover{
+  background: rgba(255,255,255,0.16);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 35px rgba(0,0,0,0.25);
+}
+
+/* ✅ Delete button gets red glow */
+.danger{
+  border-color: rgba(239, 68, 68, 0.45);
+  background: rgba(239, 68, 68, 0.16);
+}
+.danger:hover{
+  background: rgba(239, 68, 68, 0.22);
+}

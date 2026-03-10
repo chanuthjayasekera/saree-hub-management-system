@@ -1,0 +1,12 @@
+/* no global styling here on purpose */
+/* src/App.css */
+/* Makes footer stay at bottom even if page content is small */
+.app-shell{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main{
+  flex: 1;
+}

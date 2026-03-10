@@ -1,0 +1,8 @@
+/* Intentionally minimal: component styles are isolated via CSS Modules */
+html,body{margin:0;padding:0;}
+/* Remove default browser spacing */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #0b0612; /* same dark base as your theme */
+}
